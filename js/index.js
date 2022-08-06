@@ -15,9 +15,10 @@ function updateSubtotal(product) {
 function calculateAll() {
 
   const products = document.getElementsByClassName('product');
-  const totalPrice = [...products]
-    .map(product => updateSubtotal(product))
-    .reduce((sum, subtotal) => sum + subtotal, 0);
+  const totalPrice = [...products].reduce(
+    (sum, subtotal) => sum + updateSubtotal(subtotal), 
+    0
+  );
 
   const total = document.querySelector('#total-value > span');
   total.innerHTML = totalPrice;
